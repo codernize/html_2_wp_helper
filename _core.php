@@ -76,10 +76,12 @@ function wp_nav_menu($args = array()){
 		default:
 			?>
 			<ul class="right ">
-				  <li><a href="<?php echo site_url(); ?>/about.php">About</a></li>
-				  <li class="current-menu-item"><a href="<?php echo site_url(); ?>/work.php">Work</a></li>
-				  <li><a href="<?php echo site_url(); ?>/team.php">Team</a></li>
-				  <li><a href="<?php echo site_url(); ?>/services.php">Services</a></li>
+				  <li class="current-menu-item"><a href="<?php echo site_url(); ?>/about.php">About</a></li>
+				  <li><a href="<?php echo site_url(); ?>/services.php">Services & Specialties</a></li>
+				  <li><a href="<?php echo site_url(); ?>/industries.php">Industries</a></li>
+				  <li><a href="<?php echo site_url(); ?>/blog.php">Blog</a></li>
+				  <li><a href="#">Set a Meeting</a></li>
+				  <li><a href="<?php echo site_url(); ?>/contact.php">Contact</a></li>
 				</ul>
 			<?php
 			break;
@@ -142,16 +144,32 @@ function wp_title($sep = '|',$echo=true, $poz = 'right') {
 }
 
 function is_home() {
-	return FILE == 'index.php';
+	return FILE == 'index.php' ? true : (FILE == 'front-page.php' ? true : false);
 }
 function is_front_page() {
-	return FILE == 'index.php';
+	return FILE == 'index.php' ? true : (FILE == 'front-page.php' ? true : false);
 }
 
 function body_class(){
 	$class = '';
 	if (is_home()) {
-		$class .= ' home ';
+		$class .= ' home';
 	}
+	$page = FILE ;
+	$page = str_replace(array('-','_','.'), '-', $page);
+	$class .= ' page-'.$page.'-php page-template-'.$page;
 	echo 'class="'.$class.'"';
+}
+
+function is_page($what = false) {
+	if (false == $what) {
+		if (substr(FILE, 0 , 6) == 'single') {
+			return false;
+		} else {
+			return true;
+		}
+	} else if (is_string($what)) {
+		return FILE == 'page-'.$what.'.php';
+	}
+	// TODO: array
 }
