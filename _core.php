@@ -173,3 +173,15 @@ function is_page($what = false) {
 	}
 	// TODO: array
 }
+
+function is_singular($what = false)  {
+	if (false == $what) {
+		return strpos(FILE, 'single') !== false ; // if file is single(-[.*])?
+	} else if ($what == 'page') {
+		return is_page(); // single page
+	} else if ($what == 'post') {
+		return FILE == 'single.php'; // single post
+	} else {
+		return FILE == 'single-'.$what.'.php'; // single custom post type
+	}
+}
