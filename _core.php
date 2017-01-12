@@ -185,3 +185,18 @@ function is_singular($what = false)  {
 		return FILE == 'single-'.$what.'.php'; // single custom post type
 	}
 }
+
+function wp_head(){
+	?>
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/app.css" />
+	<?php
+}
+
+
+function wp_footer(){
+	?>
+	<script src="<?php bloginfo('template_url'); ?>/bower_components/jquery/dist/jquery.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/bower_components/foundation-sites/dist/foundation.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/app.js"></script>
+	<?php
+}
