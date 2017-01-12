@@ -1,0 +1,40 @@
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.fw100 { font-weight: 100; }
+.fw300 { font-weight: 300; }
+.fw400 { font-weight: 400; }
+.fw500 { font-weight: 500; }
+.fw700 { font-weight: 700; }
+.fsi { font-style: italic; }
+
+.mt20 { margin-top: 20px; }
+.mb0 { margin-bottom: 0px; }
+.mb10 { margin-bottom: 10px; }
+.mb20 { margin-bottom: 20px; }
+
+.fz14 { font-size: 14px; }
+.fz22 { font-size: 18px; }
+
+.clear { clear: both; }
+.clearfix { @include clearfix(); }
+
+a.alignright, img.alignright, .wp-caption.alignright {
+    margin: 0 0 24px 24px;
+}
+.alignright {
+    float: right;
+    text-align: right;
+}
+a.alignleft, img.alignleft, .wp-caption.alignleft {
+    margin: 0 24px 24px 0;
+}
+.alignleft {
+    float: left;
+    text-align: left;
+}
+.aligncenter {
+    margin: 0 auto 20px;
+    display: block;
+    width: auto;
+}
+
