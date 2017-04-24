@@ -7,7 +7,7 @@
         <title>Pages</title>
         <link rel="stylesheet" href="css/app.css">
     </head>
-    <body style="    background: #2E2E2E;">
+    <body style="background: #2E2E2E;">
     <div class="row">
         <div class="large-12 columns">
             <div style="
@@ -25,8 +25,8 @@
                     $files = scandir(dirname(__FILE__));
                     foreach ($files as $i => $name) {
                         if (strlen($name) > 4) {
-                            if (substr($name, -4) == '.php' && substr($name, 0,1) != '_' && $name != 'index.php') {
-                                $show_name = ucfirst(str_replace(array('_','-'), array(' ',' '), substr($name, 0,-4)));
+                            if (substr($name, -4) == '.php' && substr($name, 0,1) != '_' && !in_array($name, array('index.php','header.php','footer.php'))) {
+                                $show_name = ucwords(str_replace(array('_','-'), array(' ',' '), substr($name, 0,-4)));
                                 ?>
                                 <div class="columns small-6 medium-4 large-3"><a href="<?php echo $name ?>" class="button expanded" target="_blank" ><?php echo $show_name ?></a></div>
                                 <?php

@@ -194,6 +194,10 @@ function wp_head(){
 
 
 function wp_footer(){
+	/*
+	<script src="<?php bloginfo('template_url'); ?>/bower_components/what-input/dist/what-input.js"></script>
+	
+	 */
 	?>
 	<script src="<?php bloginfo('template_url'); ?>/bower_components/jquery/dist/jquery.js"></script>
 	<script src="<?php bloginfo('template_url'); ?>/bower_components/foundation-sites/dist/foundation.js"></script>
