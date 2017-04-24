@@ -43,6 +43,9 @@ if (isset($traces[0])) {
 	$folder_name = substr(SITE_URL, strpos(SITE_URL, 'localhost/')+10);
 	$folder_name = str_replace('/', '&nbsp;&raquo;&nbsp;', strtoupper($folder_name));
 	define('FOLDER', $folder_name);
+	
+	$this_url = dirname(__FILE__) ;
+	define('ABSPATH', $this_url . DS) ;
 
 }
 global $page, $paged;
@@ -76,12 +79,14 @@ function wp_nav_menu($args = array()){
 		default:
 			?>
 			<ul class="right ">
-				  <li class="current-menu-item"><a href="<?php echo site_url(); ?>/about.php">About</a></li>
-				  <li><a href="<?php echo site_url(); ?>/services.php">Services & Specialties</a></li>
-				  <li><a href="<?php echo site_url(); ?>/industries.php">Industries</a></li>
-				  <li><a href="<?php echo site_url(); ?>/blog.php">Blog</a></li>
-				  <li><a href="#">Set a Meeting</a></li>
-				  <li><a href="<?php echo site_url(); ?>/contact.php">Contact</a></li>
+				  <li class="current-menu-item"><a href="<?php echo site_url(); ?>/about.php">Home</a></li>
+				  <li><a href="<?php echo site_url(); ?>/services.php">Local Movers</a></li>
+				  <li><a href="<?php echo site_url(); ?>/industries.php">Long Distance Movers</a></li>
+				  <li><a href="<?php echo site_url(); ?>/blog.php">Packing Services</a></li>
+				  <li><a href="#">Storage</a></li>
+				  <li><a href="<?php echo site_url(); ?>/contact.php">FAQ</a></li>
+				  <li><a href="<?php echo site_url(); ?>/contact.php">Testimonials</a></li>
+				  <li class="has-button" ><a href="<?php echo site_url(); ?>/contact.php">CONTACT</a></li>
 				</ul>
 			<?php
 			break;
@@ -115,10 +120,10 @@ function bloginfo($what = '') {
 }
 
 function get_header() {
-	require_once '_header.php';
+	require_once 'header.php';
 }
 function get_footer() {
-	require_once '_footer.php';
+	require_once 'footer.php';
 }
 
 
@@ -203,4 +208,42 @@ function wp_footer(){
 	<script src="<?php bloginfo('template_url'); ?>/bower_components/foundation-sites/dist/foundation.js"></script>
 	<script src="<?php bloginfo('template_url'); ?>/js/app.js"></script>
 	<?php
+}
+
+
+function get_template_part( $slug, $name = null ) { 
+	$templates = array();
+	$name = (string) $name;
+	if ( '' !== $name )
+		$templates[] = "{$slug}-{$name}.php";
+
+	$templates[] = "{$slug}.php";
+
+	locate_template($templates, true, false);
+}
+
+function locate_template($template_names, $load = false, $require_once = true ) {
+	$located = '';
+	foreach ( (array) $template_names as $template_name ) {
+		if ( !$template_name )
+			continue;
+		if ( file_exists(ABSPATH .  $template_name)) {
+			$located = ABSPATH . $template_name;
+			break;
+		}	
+	}
+
+	if ( $load && '' != $located )
+		load_template( $located, $require_once );
+
+	return $located;
+}
+
+function load_template( $_template_file, $require_once = true ) {
+	
+	if ( $require_once ) {
+		require_once( $_template_file );
+	} else {
+		require( $_template_file );
+	}
 }
