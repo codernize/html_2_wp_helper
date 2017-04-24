@@ -30,37 +30,33 @@
     </head>
     <body <?php body_class() ?>>
 
-<header class=" fixed" id="header">
-    <nav class="top-bar" data-topbar role="navigation" data-options="scrolltop:false">
-        <ul class="title-area">
-            <li class="name">
-                <a href="<?php echo site_url(); ?>"><img data-interchange="[<?php echo site_url(); ?>/images/logo.png, (default)], [<?php echo site_url(); ?>/images/logo_x2.png, (retina)]" alt="<?php bloginfo('name'); ?>"></a>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
+    <header id="header">
+        <nav class="top-bar" data-topbar role="navigation" data-options="scrolltop:false">
+            <div class="top-bar-title">
+                <a href="<?php echo site_url(); ?>" title="<?php bloginfo('name'); ?>" class="logo" ><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" /></a>
+                <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+                    <button class="menu-icon dark" type="button" data-toggle></button>
+                </span>
+            </div>
+            <section id="responsive-menu">
+              <!-- Left Nav Section -->
+              <?php 
+                $args = array(
+                  'theme_location'  => 'primary',
+                  'container'       => false, // Use false for no container, 'div' default
+                  'container_class' => 'top-bar-center',
+                  'container_id'    => '',
+                  'menu_class'      => 'vertical medium-horizontal menu',
+                  'menu_id'         => '',
+                  'depth'           => 1,
+                  'echo'        => false ,
+                );
+                $menu = wp_nav_menu($args);
+                // play with $menu
+                
+                echo $menu; 
+              ?>
+            </section>
 
-        <section class="top-bar-section">
-      
-
-        <!-- Left Nav Section -->
-        <?php 
-        $args = array(
-            'theme_location'  => 'primary',
-            'container'       => false, // Use false for no container, 'div' default
-            'container_class' => '',
-            // 'container_id'    => '',
-            'menu_class'      => ' ',
-            // 'menu_id'         => '',
-            'depth'           => 1,
-            'echo'        => false ,
-        );
-        $menu = wp_nav_menu($args);
-        // play with $menu
-        
-        echo $menu; 
-      ?>
-        </section>
-    </nav>
-</header>
-
+        </nav>
+    </header>
