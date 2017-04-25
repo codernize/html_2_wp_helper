@@ -67,8 +67,8 @@ function wp_nav_menu($args = array()){
 	<?php switch ($args['theme_location']) {
 		case 'footer':
 			?>
-			<div class="columns footer-menu text-right small-only-text-center medium-6 medium-push-6">
-				<ul class="inline-list ">
+			<div class="columns footer-menu">
+				<ul class="no-bulets">
 					<li><a href="#">Careers</a></li>        
 					<li><a href="#">Capabilities</a></li>
 				</ul>
@@ -79,14 +79,11 @@ function wp_nav_menu($args = array()){
 		default:
 			?>
 			<ul class="right ">
-				  <li class="current-menu-item"><a href="<?php echo site_url(); ?>/about.php">Home</a></li>
-				  <li><a href="<?php echo site_url(); ?>/services.php">Local Movers</a></li>
-				  <li><a href="<?php echo site_url(); ?>/industries.php">Long Distance Movers</a></li>
-				  <li><a href="<?php echo site_url(); ?>/blog.php">Packing Services</a></li>
-				  <li><a href="#">Storage</a></li>
-				  <li><a href="<?php echo site_url(); ?>/contact.php">FAQ</a></li>
-				  <li><a href="<?php echo site_url(); ?>/contact.php">Testimonials</a></li>
-				  <li class="has-button" ><a href="<?php echo site_url(); ?>/contact.php">CONTACT</a></li>
+				  <li class="current-menu-item"><a href="#">Home</a></li>
+				  <li><a href="#">About</a></li>
+				  <li><a href="#">FAQ</a></li>
+				  <li><a href="#">Testimonials</a></li>
+				  <li><a href="#">CONTACT</a></li>
 				</ul>
 			<?php
 			break;

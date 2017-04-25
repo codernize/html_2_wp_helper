@@ -1,9 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php
             /*
              * Print the <title> tag based on what is being viewed.
              */
@@ -24,7 +24,7 @@
                 echo ' | ' . sprintf( __( 'Page %s', 'themename' ), max( $paged, $page ) );
 
             ?>
-                
+
         </title>
         <?php wp_head(); ?>
     </head>
@@ -42,14 +42,14 @@
               <!-- Left Nav Section -->
               <?php 
                 $args = array(
-                  'theme_location'  => 'primary',
-                  'container'       => false, // Use false for no container, 'div' default
-                  'container_class' => 'top-bar-center',
-                  'container_id'    => '',
-                  'menu_class'      => 'vertical medium-horizontal menu',
-                  'menu_id'         => '',
-                  'depth'           => 1,
-                  'echo'        => false ,
+                    'theme_location'  => 'primary',
+                    'container'       => false, // Use false for no container, 'div' default
+                    'container_class' => 'top-bar-center',
+                    'container_id'    => '',
+                    'menu_class'      => 'vertical medium-horizontal menu',
+                    'menu_id'         => '',
+                    'depth'           => 1,
+                    'echo'        => false ,
                 );
                 $menu = wp_nav_menu($args);
                 // play with $menu
