@@ -116,11 +116,13 @@ function bloginfo($what = '') {
 	
 }
 
-function get_header() {
-	require_once 'header.php';
+function get_header($what = null) {
+	get_template_part('header',$what);
+	// require_once 'header.php'; // deprecated
 }
-function get_footer() {
-	require_once 'footer.php';
+function get_footer($what = null) {
+	get_template_part('header',$what);
+	// require_once 'footer.php'; // deprecated
 }
 
 
