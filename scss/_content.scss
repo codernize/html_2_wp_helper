@@ -55,18 +55,18 @@ $fz_breaks : (
 }
 
 // margins & paddings
-$margins : (0,5,10,15,20,25,30);
-@each $margin in $margins {
-    .mb#{$margin} { margin-bottom: #{$margin}px;}
-    .mt#{$margin} { margin-top   : #{$margin}px;}
-    .m#{$margin}  { margin       : #{$margin}px;}
-    .ml#{$margin} { margin-left  : #{$margin}px;}
-    .mr#{$margin} { margin-right : #{$margin}px;}
-    .pb#{$margin} {padding-bottom: #{$margin}px;}
-    .pt#{$margin} {padding-top   : #{$margin}px;}
-    .p#{$margin}  {padding       : #{$margin}px;}
-    .pl#{$margin} {padding-left  : #{$margin}px;}
-    .pr#{$margin} {padding-right : #{$margin}px;}
+$spacingVals : (0,5,10,15,20,25,30);
+@each $space in $spacingVals {
+    .mb#{$space} { margin-bottom : #{$space}px;}
+    .mt#{$space} { margin-top    : #{$space}px;}
+    .m#{$space}  { margin        : #{$space}px;}
+    .ml#{$space} { margin-left   : #{$space}px;}
+    .mr#{$space} { margin-right  : #{$space}px;}
+    .pb#{$space} { padding-bottom: #{$space}px;}
+    .pt#{$space} { padding-top   : #{$space}px;}
+    .p#{$space}  { padding       : #{$space}px;}
+    .pl#{$space} { padding-left  : #{$space}px;}
+    .pr#{$space} { padding-right : #{$space}px;}
 }
 
 // wp fixes
