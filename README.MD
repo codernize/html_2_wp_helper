@@ -1,5 +1,4 @@
 # HTML development files to WP theme
-===
 
 Create WP theme files straight from HTML stage.
 
@@ -13,11 +12,11 @@ Create WP theme files straight from HTML stage.
 **_core.php** has all logic and functions that mimics WP functions, like *get_header()*, *get_footer()* ...etc
 index.php list all created pages, all php files except itself, header,footer and _core
 
-Tested with foundation 6
+Tested with `foundation 6`
 
 SCSS folder structure:
 - **_bxslider.scss** default styling for bxSlider, if you want to use it in your project
 - **_content.scss** has customized classes (`.pr10 = padding-right:10px`,etc...) and most common used ones 
-- **_header.scss** , **_footer.scss** and **_sidebar.scss* for themselfs
+- **_header.scss** , **_footer.scss** and **_sidebar.scss** for themselfs
 - **admin.scss** can be added for WP admin side
 - **editor.scss** used for WP admin editor in order to maintain consistency
