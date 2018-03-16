@@ -1,5 +1,7 @@
 <?php 
-
+if (defined('ABSPATH')) { // if in WordPress, then don't run the code
+	return true;
+} // end if 
 
 
 $traces = debug_backtrace();
