@@ -255,3 +255,18 @@ function load_template( $_template_file, $require_once = true ) {
 function the_post(){
 	return true;
 }
+
+function get_the_title(){
+	return PAGE_NAME ;
+}
+
+function the_title($before = '', $after = '', $echo = true ) {
+	$title = get_the_title();
+	    if ( strlen($title) == 0 )
+            return;
+	$title = $before . $title . $after;
+	if ( $echo )
+        echo $title;
+    else
+        return $title;
+}
