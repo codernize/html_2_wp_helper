@@ -248,3 +248,10 @@ function load_template( $_template_file, $require_once = true ) {
 		require( $_template_file );
 	}
 }
+
+
+
+// nothing yet
+function the_post(){
+	return true;
+}
