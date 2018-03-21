@@ -123,7 +123,7 @@ function get_header($what = null) {
 	// require_once 'header.php'; // deprecated
 }
 function get_footer($what = null) {
-	get_template_part('header',$what);
+	get_template_part('footer',$what);
 	// require_once 'footer.php'; // deprecated
 }
 
