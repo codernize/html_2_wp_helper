@@ -31,32 +31,44 @@
     <body <?php body_class() ?>>
 
     <header id="header">
-        <nav class="top-bar" data-topbar role="navigation" data-options="scrolltop:false">
-            <div class="top-bar-title">
-                <a href="<?php echo site_url(); ?>" title="<?php bloginfo('name'); ?>" class="logo" ><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" /></a>
-                <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-                    <button class="menu-icon dark" type="button" data-toggle></button>
-                </span>
-            </div>
-            <section id="responsive-menu">
-              <!-- Left Nav Section -->
-              <?php 
-                $args = array(
-                    'theme_location'  => 'primary',
-                    'container'       => false, // Use false for no container, 'div' default
-                    'container_class' => 'top-bar-center',
-                    'container_id'    => '',
-                    'menu_class'      => 'vertical medium-horizontal menu',
-                    'menu_id'         => '',
-                    'depth'           => 1,
-                    'echo'        => false ,
-                );
-                $menu = wp_nav_menu($args);
-                // play with $menu
+        <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <a href="<?php echo site_url(); ?>/"><img src="<?php bloginfo('template_url'); ?>/images/logo.png"
+                 alt="<?php echo esc_textarea(get_bloginfo('name') ); ?>" /></a>
+            <div class="align-right">
+                <button class="menu-icon dark" type="button" data-toggle="responsive-menu"></button>
+                <div class="title-bar-title" data-toggle="responsive-menu">Menu</div>
                 
-                echo $menu; 
-              ?>
-            </section>
+            </div> <!-- /.align-right -->     
+        </div>
 
-        </nav>
+        <div class="top-bar" id="responsive-menu">
+            <div class="top-bar-left show-for-medium" >
+                <?php 
+                    $args = array(
+                        'theme_location'  => 'primary',
+                        'container'       => false, // Use false for no container, 'div' default
+                        'container_class' => 'top-bar-center',
+                        'container_id'    => '',
+                        'menu_class'      => 'vertical medium-horizontal menu',
+                        'menu_id'         => '',
+                        'depth'           => 1,
+                        'echo'        => false ,
+                    );
+                    $menu = wp_nav_menu($args);
+                    // play with $menu
+                  
+                    echo $menu; 
+                ?>
+            </div>
+            
+
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <li><a href="#" class="button">CONTACT</a></li>
+                  
+                </ul>
+            </div>
+        </div>
+
+        
     </header>
