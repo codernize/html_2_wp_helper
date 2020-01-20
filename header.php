@@ -33,7 +33,7 @@
     <header id="header">
         <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
             <a href="<?php echo site_url(); ?>/"><img src="<?php bloginfo('template_url'); ?>/images/logo.png"
-                 alt="<?php echo esc_textarea(get_bloginfo('name') ); ?>" /></a>
+                 alt="<?php echo esc_attr(get_bloginfo('name') ); ?>" /></a>
             <div class="align-right">
                 <button class="menu-icon dark" type="button" data-toggle="responsive-menu"></button>
                 <div class="title-bar-title" data-toggle="responsive-menu">Menu</div>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="top-bar" id="responsive-menu">
-            <div class="top-bar-left show-for-medium" >
+            <div class="top-bar-left" >
                 <?php 
                     $args = array(
                         'theme_location'  => 'primary',
