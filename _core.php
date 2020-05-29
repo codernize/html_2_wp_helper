@@ -80,7 +80,7 @@ function wp_nav_menu($args = array()){
 		
 		default:
 			?>
-			<ul class="right ">
+			<ul class="menu vertical medium-horizontal ">
 				  <li class="current-menu-item"><a href="#">Home</a></li>
 				  <li><a href="#">About</a></li>
 				  <li><a href="#">FAQ</a></li>
@@ -205,8 +205,9 @@ function wp_footer(){
 	
 	 */
 	?>
-	<script src="<?php bloginfo('template_url'); ?>/bower_components/jquery/dist/jquery.js"></script>
-	<script src="<?php bloginfo('template_url'); ?>/bower_components/foundation-sites/dist/foundation.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/what-input.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/foundation.js"></script>
 	<script src="<?php bloginfo('template_url'); ?>/js/app.js"></script>
 	<?php
 }
