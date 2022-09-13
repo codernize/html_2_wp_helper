@@ -1,0 +1,26 @@
+{
+  "name": "cod-starter-package",
+  "version": "1.4.0",
+  "description": "cod custom theme, using gulp v4",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "foundation-sites": "^6.6.0",
+    "gulp": "^4.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass"
+  },
+  "bugs": {
+    "email": "codernize@gmail.com"
+  },
+  "author": "codernize <codernize@gmail.com>",
+  "private": true,
+  "dependencies": {}
+}

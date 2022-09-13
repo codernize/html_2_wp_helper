@@ -1,0 +1,32 @@
+@mixin wp_blocks__buttons() {
+    .wp-block-button__link {
+        font-size: 14px;
+        padding: 10px 30px;
+        transition: color 300ms linear,
+                    border-color 300ms linear ,
+                    background-color 300ms linear ;
+
+        @include breakpoint(medium) {
+            padding: 12px 46px;
+        } // end breakpoint medium
+        @include breakpoint(xlarge) {
+            padding: 15px 66px;
+        } // end breakpoint xlarge
+        &.has-white-color {
+            &:hover,
+            &:focus {
+                background-color: #fff;
+                color: $secondary-color;
+            }
+            &.block-editor-rich-text__editable {
+                &:hover,
+                &:focus {
+                    color: $secondary-color!important;
+                    
+                }
+            }       
+        }
+        
+    }
+
+}

@@ -1,0 +1,95 @@
+@mixin wp_blocks__page_title() {
+
+    section.page-title {
+        position: relative;
+        z-index: 15;
+        @include breakpoint(xxlarge) {
+            // margin-left: 60px;
+            // margin-right: 60px;
+            // margin-top: 25px;
+            padding: 25px 60px;
+        } // end breakpoint xxlarge
+        .page-title-container {
+            background-position: center center;
+            background-size: cover;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            &[style*="--background-image"] {
+                background-image: 
+                                linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) , 
+                                var(--background-image) ;
+    
+            }
+            .page-title-content {
+                & , * {
+                    z-index: 20;
+                    // position: relative;
+    
+                }
+                .decor-squaredots-primary {
+                    bottom: 6%;
+                    left: 11vw;
+                    z-index: -1;
+                }
+                --hero-content-spacing : 60px;
+                padding-top: var(--hero-content-spacing);
+                padding-bottom: var(--hero-content-spacing);
+                color: #fff;
+                @include breakpoint(medium) {
+                    --hero-content-spacing : 80px;
+                } // end breakpoint medium
+                @include breakpoint(large) {
+                    --hero-content-spacing : 100px;
+                } // end breakpoint large
+                @include breakpoint(xlarge) {
+                    --hero-content-spacing : 114px;
+                } // end breakpoint xlarge
+                    
+                h1,h2,h3,h4,h5,h6 {
+                    color: #fff;
+                    line-height: 1.1em;
+                    letter-spacing: 0.05em;
+                    z-index: 25;
+                    strong {
+                        display: block;
+                    }
+                }
+            }
+    
+        }
+        &.has-icon-boxes-after { // has icon-boxes section after
+            &:after {
+                content: "";
+                width: 100%;
+                z-index: -1;
+                height: 130px;
+                background-image: linear-gradient(to right, transparent 0% 12vw, $secondary-color 12vw 100%);
+                position: absolute;
+                right: 0;
+                left: 0;    
+                bottom: -60px;
+            } // end after 
+        }
+        .bradcrums-container {
+            & , * {
+                z-index: 20;
+    
+            }
+            margin-top: 40px;
+            ul.breadcrumbs {
+                background-color: #fff;
+    
+                @include breakpoint(large) {
+                    margin-left: 110px;
+                } // end breakpoint large
+                li {
+                    a {
+                        &:hover  ,
+                        &:focus {
+                            color: $primary-color;
+                        } // end H&B 
+                    }
+                }
+            }
+        }
+    }
+}

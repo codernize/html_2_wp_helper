@@ -194,7 +194,7 @@ function is_singular($what = false)  {
 
 function wp_head(){
 	?>
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/app.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/app.min.css" />
 	<?php
 }
 
@@ -376,4 +376,10 @@ function esc_attr( $text ) {
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 	
 	return $safe_text;
+}
+
+function custom_breadcrumbs(){
+	?>
+	<p>to be added</p>
+	<?php
 }

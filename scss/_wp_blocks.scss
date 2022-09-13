@@ -1,0 +1,159 @@
+
+// @import 'wp_blocks__hero'; // mixin wp_blocks__hero
+@import 'wp_blocks__buttons'; // mixin wp_blocks__buttons
+@import 'wp_blocks__columns'; // mixin wp_blocks__columns
+@import 'wp_blocks__page_title'; // mixin wp_blocks__columns
+
+
+@mixin wp_blocks() {
+    @include wp_blocks__buttons ;
+    @include wp_blocks__columns ;
+    @include wp_blocks__page_title ;
+
+
+
+
+
+    .wp-block-columns {
+        &:not(.row) {
+            @include flex-grid-row;
+        } // end not(.row) 
+        & > .wp-block-column {
+            &:not(.columns) {
+                @include flex-grid-column;
+
+                @include -zf-each-breakpoint {
+                    @for $i from 1 through $grid-column-count {
+                      // Sizing (percentage)
+                      &.#{$-zf-size}-#{$i} {
+                        flex: flex-grid-column($i);
+                        max-width: grid-column($i);
+                      }
+                
+                      // Offsets
+                      $o: $i - 1;
+                
+                      &.#{$-zf-size}-offset-#{$o} {
+                        @include grid-column-offset($o);
+                      }
+                    }
+                
+                    // Block grid
+                    @for $i from 1 through $block-grid-max {
+                      &.#{$-zf-size}-up-#{$i} {
+                        @include flex-grid-layout($i);
+                      }
+                    }
+                
+                    @if $-zf-size != $-zf-zero-breakpoint {
+                      // Sizing (expand)
+                      @include breakpoint($-zf-size) {
+                        &.#{$-zf-size}-expand {
+                          flex: flex-grid-column();
+                        }
+                      }
+                
+                    }
+                
+                  }
+            } // end not(.columns) 
+            @extend .column; // sass-lint:disable-line placeholder-in-extend
+            
+            
+            
+            
+        }
+        @include -zf-each-breakpoint {
+            @for $i from 1 through $grid-column-count {
+              // Sizing (percentage)
+              .#{$-zf-size}-#{$i} {
+                flex: flex-grid-column($i);
+                max-width: grid-column($i);
+              }
+        
+              // Offsets
+              $o: $i - 1;
+        
+              .#{$-zf-size}-offset-#{$o} {
+                @include grid-column-offset($o);
+              }
+            }
+        
+            // Block grid
+            @for $i from 1 through $block-grid-max {
+              .#{$-zf-size}-up-#{$i} {
+                @include flex-grid-layout($i);
+              }
+            }
+        
+            @if $-zf-size != $-zf-zero-breakpoint {
+              // Sizing (expand)
+              @include breakpoint($-zf-size) {
+                .#{$-zf-size}-expand {
+                  flex: flex-grid-column();
+                }
+              }
+        
+              // Auto-stacking/unstacking
+              @at-root (without: media) {
+                .row.#{$-zf-size}-unstack {
+                  > .column {
+                    flex: flex-grid-column(100%);
+        
+                    @include breakpoint($-zf-size) {
+                      flex: flex-grid-column();
+                    }
+                  }
+                }
+              }
+            }
+        
+            // Responsive collapsing
+            .#{$-zf-size}-collapse {
+              > .column { @include grid-col-collapse; }
+            }
+        
+            .#{$-zf-size}-uncollapse {
+              > .column { @include grid-col-gutter($-zf-size); }
+            }
+          }
+    }
+    .row > .wp-block-group__inner-container {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: .75rem;
+        padding-left: .75rem;
+    }
+    .has-text-align-center {
+         text-align: center;
+    }
+    .has-text-align-right {
+         text-align: right;
+    }
+    .has-text-align-left {
+         text-align: left;
+    }
+
+    & > .wp-block-group {
+      & > .wp-block-group__inner-container,
+      & > .wp-block-group {
+        margin-right: .625rem;
+        margin-left: .625rem;
+        @include breakpoint(medium) {
+            margin-right: .8125rem;
+            margin-left: .8125rem;
+        } // end breakpoint medium
+        @include breakpoint(large) {
+            margin-right: 1rem;
+            margin-left: 1rem;
+        } // end breakpoint large
+        @include breakpoint(xlarge) {
+            margin-right: 1.25rem;
+            margin-left: 1.25rem;
+        } // end breakpoint xlarge
+      }
+    }
+    
+}
+
+

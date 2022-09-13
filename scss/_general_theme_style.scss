@@ -1,0 +1,279 @@
+// GENERAL
+
+.fsi { font-style: italic; }
+.clear { clear: both; }
+.dib { display: inline-block; }
+.db { display: block; }
+.clearfix { @include clearfix(); }
+// font weight
+$fw : (300,400,500,600,700,900) ;
+@each $curent_font_weight in $fw {
+    .fw#{$curent_font_weight}{
+        font-weight : #{$curent_font_weight};
+    }  
+}
+.lh1 {     line-height: 1em; }
+.lh2 {     line-height: 2em; }
+// font sizes
+$fz_min : 14;
+$fz_max : 100;
+$fz_breaks : (
+    small : 18,
+    medium: 24,
+    large : 32,
+    xlarge: 40          
+);
+
+@for $fz_now from $fz_min through $fz_max {
+    .fz#{$fz_now} {
+        
+        $line_heights : ceil($fz_now / 14 ) ; // basically this adds more size the greather the font size is. So for 80px will add more than for 50px
+        @each $fz_break_point , $fz_break_size in $fz_breaks {
+            $temp_reduct : 0;
+            @if $fz_break_size  <= $fz_now {
+                $temp_reduct : ceil($fz_now / $fz_break_size ) + $line_heights ; // calculate amount of px to add on every break point
+            }
+            @if $fz_break_point == 'small' {
+                $temp_fz : $fz_break_size + $temp_reduct ;
+                @if $temp_fz > $fz_now {
+                    $temp_fz : $fz_now ;
+                }
+                font-size: #{$temp_fz}px;
+                    
+            } @else {
+                @include breakpoint($fz_break_point) {
+                    // font-size: #{$fz_break_size}px;
+                    $temp_fz : $fz_break_size + $temp_reduct ;
+                    @if $fz_break_point == 'xlarge' and $fz_now >= $fz_break_size {
+                        $temp_fz : $fz_now ;
+                    } 
+                    @if $temp_fz <= $fz_now {
+                        font-size: #{$temp_fz}px;
+                        
+                    }
+                } // end breakpoint $fz_break_point
+
+            }
+            
+           
+        }
+    }
+}
+
+// margins & paddings
+$spacingVals : (0,5,10,15,20,25,30,40,50,60,70,80,90,100);
+@each $space in $spacingVals {
+    .mb#{$space} { margin-bottom : #{$space}px;}
+    .mt#{$space} { margin-top    : #{$space}px;}
+    .m#{$space}  { margin        : #{$space}px;}
+    .ml#{$space} { margin-left   : #{$space}px;}
+    .mr#{$space} { margin-right  : #{$space}px;}
+    .pb#{$space} { padding-bottom: #{$space}px;}
+    .pt#{$space} { padding-top   : #{$space}px;}
+    .p#{$space}  { padding       : #{$space}px;}
+    .pl#{$space} { padding-left  : #{$space}px;}
+    .pr#{$space} { padding-right : #{$space}px;}
+}
+
+// wp fixes
+// .text-center { text-align: center; }
+// .text-right { text-align: right; }
+a.alignright, img.alignright, .wp-caption.alignright { margin: 0 0 24px 24px; }
+.alignright { float: right; text-align: right; }
+a.alignleft, img.alignleft, .wp-caption.alignleft { margin: 0 24px 24px 0; }
+.alignleft {float: left; text-align: left;}
+.aligncenter { margin: 0 auto 20px; display: block;width: auto; }
+
+    
+.ttu {
+    text-transform: uppercase;
+}
+.ttn { text-transform: none; }
+
+// font weight
+$fw : (100,300,400,500,700,900) ;
+@each $curent_font_weight in $fw {
+    .fw#{$curent_font_weight}{
+        font-weight : #{$curent_font_weight};
+    }  
+}
+
+// end GENERAL
+
+
+
+.section {
+    --section-padding:40px;
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    @include breakpoint(medium) {
+        --section-padding:60px;
+        
+    } // end breakpoint medium
+    @include breakpoint(large) {
+        --section-padding:70px;
+        
+    } // end breakpoint large
+    @include breakpoint(xlarge) {
+        --section-padding:80px;
+        
+    } // end breakpoint xlarge
+    &.bg-gray ,
+    &.gray-bg {
+        background-color:  #FBFBFB;;
+    }    
+}
+
+
+
+
+
+@include breakpoint(medium) {
+    .medium-padding-left-2 {
+        padding-left: 2rem !important;
+    }
+    .medium-padding-right-2 {
+        padding-right: 2rem !important;
+    }
+    .medium-padding-left-3 {
+        padding-left: 3rem !important;
+    }
+    .medium-padding-right-3 {
+        padding-right: 3rem !important;
+    }
+    .medium-margin-bottom-0 {
+        margin-bottom: 0;
+    }
+} // end breakpoint medium
+@include breakpoint(large) {
+    .large-padding-left-2 {
+        padding-left: 2rem !important;
+    }
+    .large-padding-right-2 {
+        padding-right: 2rem !important;
+    }
+    .large-padding-left-3 {
+        padding-left: 3rem !important;
+    }
+    .large-padding-right-3 {
+        padding-right: 3rem !important;
+    }
+    .large-margin-bottom-0 {
+        margin-bottom: 0;
+    }
+} // end breakpoint large
+
+.has-shadow {
+    box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.03);
+}
+
+
+ul.bullet-primary {
+    list-style: none; /* Remove default bullets */
+}
+  
+ul.bullet-primary li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: $primary-color; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -.5em; /* Also needed for space (tweak if needed) */
+}
+
+
+ol  {
+    list-style: none; 
+    counter-reset: li;
+    li {
+        counter-increment: li
+    }
+    li::before {
+        content: counter(li)'. '; 
+        color: $primary-color;
+        display: inline-block; 
+        width: 1em;
+        margin-left: -.5em;
+        font-weight: 700;
+        margin-right: 0.2em;
+
+    }
+
+}
+
+ul ,
+ol {
+    li {
+        margin-bottom: 4px;
+    }
+}
+
+
+section.z20 {
+  & , * {
+      z-index: 20;
+  }  
+}
+
+
+.bg-half-transparent-black {
+    background-image: linear-gradient(to bottom,  transparent 0% 50%, #27282B 50% 100% );
+}
+
+
+.bg-half-white-gray {
+    background-image: linear-gradient(to bottom,  white 0% 50%, #fafafa 50% 100% );
+}
+
+.color-primary,
+.primary-color {
+    color: $primary-color;
+}
+.color-secondary,
+.secondary-color {
+    color: $secondary-color;
+}
+
+
+
+.bg-primary {
+    background-color: $primary-color;
+    
+}
+.bg-secondary {
+    background-color: $secondary-color;
+    
+}
+.color-white, 
+.text-white, 
+.white-text, 
+.white-color {
+    & , p, li , h1,h2,h3,h4,h5,h6 {
+        color: #fff;
+    }
+    &.button {
+        color: #fff;
+        &:hover  ,
+        &:focus {
+            color: #fff;
+            
+        } // end H&B 
+        
+    }
+}
+
+.bg-white {
+    background-color: #fff ;
+}
+
+
+
+
+@include breakpoint(medium) {
+    .medium-pl0 {
+        padding-left: 0;
+    }
+    .medium-pr0 {
+        padding-right: 0;
+    }
+} // end breakpoint medium

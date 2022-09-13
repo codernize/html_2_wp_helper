@@ -1,0 +1,17 @@
+@mixin wp_blocks__columns(){
+    .wp-block-columns {
+        @include flex-grid-row() ;
+        .wp-block-column {
+            margin-left: 0 !important;
+            padding-left: 12px; // half of gutter
+            padding-right: 12px; // half of gutter
+
+            @include foundation-flex-classes() ;
+        }
+    }
+    @media (min-width: 600px) and (max-width: 781px) {
+        .wp-block-column {
+            flex-basis: 100%!important;
+        }
+    }
+}
